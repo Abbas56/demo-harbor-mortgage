@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+const items = [{"question":"Are you tied to one bank?","answer":"No. We are independent and have access to a wide range of lenders via our network."},{"question":"Is the first meeting free?","answer":"Yes. The initial consultation is at no cost and no obligation. We explain our fees before you proceed."},{"question":"What documents will I need?","answer":"Typically proof of ID, address, last three months payslips (or accounts if self-employed), bank statements and existing mortgage details."},{"question":"Can you guarantee my mortgage will be approved?","answer":"No adviser can guarantee approval—that is the lender decision. We aim to match you with suitable lenders and present your application clearly."},{"question":"Do you cover areas outside Norwich?","answer":"Yes. We advise clients across Norfolk and can meet by video if travelling to Tombland is not convenient."}];
+---
+<BaseLayout title="FAQ | Harbor Mortgage Advice" description="Answers to common questions about Harbor Mortgage Advice Ltd.">
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'FAQ' }]} />
+  <section class="section">
+    <div class="container">
+      <h1>Frequently asked questions</h1>
+      <p class="lead">Practical answers for customers across Norfolk.</p>
+    </div>
+  </section>
+  <FAQ items={items} title="Common questions" />
+  <CTABand />
+</BaseLayout>

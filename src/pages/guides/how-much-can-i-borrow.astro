@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'How much can I borrow?',
+  description: 'Understanding mortgage affordability—income multiples, outgoings and stress tests explained for UK buyers.',
+  intro: `Lenders assess affordability using income, committed outgoings and stress-tested interest rates. This guide explains the general principles—your adviser will calculate figures specific to you.`,
+  bullets: ["Income multiples and joint applications","Credit commitments and childcare costs","Stress testing at higher interest rates","Why online calculators differ from lender decisions"],
+  faqs: [{"question":"Can I include overtime or bonus income?","answer":"Some lenders accept a proportion of variable income with evidence. We know which lenders are flexible for your employment type."},{"question":"Do student loans affect borrowing?","answer":"Plan 2 loans are usually considered differently to credit cards. We factor this into lender selection."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Guides","href":"/guides/first-time-buyer-mortgage-guide/"},{"label":"How much can I borrow"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

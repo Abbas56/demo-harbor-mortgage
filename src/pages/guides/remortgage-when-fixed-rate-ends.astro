@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'Remortgage when your fixed rate ends',
+  description: 'Plan your remortgage 3–6 months before your fixed rate ends—timeline and checklist for Norfolk homeowners.',
+  intro: `Rolling onto a standard variable rate is often expensive. Starting conversations early gives time to compare deals, gather documents and avoid last-minute pressure.`,
+  bullets: ["3–6 month planning timeline","Check early repayment charges on current deal","Compare product transfer vs new lender","Documents to gather before applying"],
+  faqs: [{"question":"Can I remortgage before my fix ends?","answer":"Sometimes, but early repayment charges may apply. We model whether switching early saves money overall."},{"question":"Will I need another valuation?","answer":"Usually yes for a new lender. Product transfers with the same lender may not require a full valuation."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Guides","href":"/guides/first-time-buyer-mortgage-guide/"},{"label":"Remortgage guide"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

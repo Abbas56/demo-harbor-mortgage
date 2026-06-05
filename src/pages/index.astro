@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MortgageList from '../components/MortgageList.astro';
+import Stepper from '../components/Stepper.astro';
+import GuideList from '../components/GuideList.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import { site } from '../data/site';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Harbor Mortgage Advice Ltd",
+  "description": "FCA-authorised independent mortgage broker in Norwich. Whole-of-market advice for first-time buyers, remortgages and buy-to-let across Norfolk.",
+  "telephone": "+441603882410",
+  "email": "hello@harbormortgage-demo.co.uk",
+  "url": "https://example.com/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8 Tombland",
+    "addressLocality": "Norwich",
+    "addressRegion": "Norfolk",
+    "postalCode": "NR3 1HF",
+    "addressCountry": "GB"
+  },
+  "areaServed": "Norfolk"
+};
+
+const previewFaqs = [{"question":"Are you tied to one bank?","answer":"No. We are independent and have access to a wide range of lenders via our network."},{"question":"Is the first meeting free?","answer":"Yes. The initial consultation is at no cost and no obligation. We explain our fees before you proceed."},{"question":"What documents will I need?","answer":"Typically proof of ID, address, last three months payslips (or accounts if self-employed), bank statements and existing mortgage details."}];
+
+const mortgages = [
+  { title: "First-time buyers", description: "Plain-English guidance from budget to completion.", href: "/mortgages/first-time-buyers/" },
+  { title: "Remortgaging", description: "Plan before your fixed rate ends.", href: "/mortgages/remortgaging/" },
+  { title: "Moving home", description: "Porting, new borrowing and chain support.", href: "/mortgages/moving-home/" },
+  { title: "Buy-to-let", description: "BTL affordability and portfolio lenders.", href: "/mortgages/buy-to-let/" },
+  { title: "Self-employed", description: "SA302, accounts and contractor routes.", href: "/mortgages/self-employed/" },
+  { title: "Protection & insurance", description: "Life cover and income protection alongside your mortgage.", href: "/mortgages/protection-insurance/" },
+];
+
+const steps = [
+  { label: "Consultation", detail: "Free, no-obligation meeting" },
+  { label: "Research", detail: "Whole-of-market comparison" },
+  { label: "Application", detail: "We handle lender liaison" },
+  { label: "Completion", detail: "Keys and ongoing support" },
+];
+
+const guides = [
+  { title: "First-time buyer mortgage guide", href: "/guides/first-time-buyer-mortgage-guide/", date: "12 Jan 2026", readTime: "8 min" },
+  { title: "How much can I borrow?", href: "/guides/how-much-can-i-borrow/", date: "3 Feb 2026", readTime: "5 min" },
+  { title: "Remortgage when your fixed rate ends", href: "/guides/remortgage-when-fixed-rate-ends/", date: "18 Mar 2026", readTime: "6 min" },
+];
+---
+<BaseLayout title={`${site.name} — ${site.tagline}`} description={site.description} jsonLd={jsonLd}>
+  <section class="hero-harbor">
+    <div class="frame hero-harbor__layout">
+      <div>
+        <h1>Mortgage advice in Norwich—clear options, no bank bias</h1>
+        <p class="lead">Independent, whole-of-market advice for first-time buyers, homemovers and landlords across Norfolk.</p>
+        <div class="hero-harbor__ctas">
+          <a class="btn-teal" href={site.primaryCtaHref}>{site.primaryCtaLabel}</a>
+          <a class="btn-teal btn-teal--ghost" href={`tel:${site.phoneTel}`}>Call {site.phone}</a>
+        </div>
+      </div>
+      <div class="hero-harbor__frame">
+        <div class="hero-harbor__photo" role="img" aria-label="Mortgage adviser placeholder"></div>
+      </div>
+    </div>
+  </section>
+  <section class="panel panel--white">
+    <div class="frame">
+      <h2>Mortgage types we advise on</h2>
+      <MortgageList items={mortgages} />
+    </div>
+  </section>
+  <section class="panel panel--sand">
+    <div class="frame">
+      <h2>How it works</h2>
+      <Stepper steps={steps} />
+    </div>
+  </section>
+  <section class="panel panel--white">
+    <div class="frame">
+      <h2>Your advisers</h2>
+      <div class="adviser-row" style="margin-top:1.5rem">
+        <article class="adviser-card">
+          <div class="adviser-card__photo" role="img" aria-label="Rachel"></div>
+          <h3>Rachel Harbor</h3>
+          <p>CeMAP qualified · 12 years advising in Norfolk</p>
+        </article>
+        <article class="adviser-card">
+          <div class="adviser-card__photo" role="img" aria-label="David"></div>
+          <h3>David Marsh</h3>
+          <p>CeMAP qualified · Buy-to-let &amp; self-employed specialist</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="panel panel--sand">
+    <div class="frame">
+      <h2>Guides &amp; resources</h2>
+      <GuideList guides={guides} />
+    </div>
+  </section>
+  <section class="panel panel--white">
+    <div class="frame">
+      <h2>What clients say</h2>
+      <div class="quotes-row" style="margin-top:1.25rem">
+        <blockquote class="harbor-quote">
+          <p>Rachel explained fixed vs tracker properly—something our bank branch did not.</p>
+          <cite>Emma &amp; James, Norwich</cite>
+        </blockquote>
+        <blockquote class="harbor-quote">
+          <p>Clear advice on BTL affordability. No hard sell on products we did not need.</p>
+          <cite>Priya, Wymondham</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+  <FAQ items={previewFaqs} title="Common questions" />
+  <CTABand heading="Book a free initial consultation" text="No obligation—we explain our fees before you proceed." />
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'Self-employed mortgages',
+  description: 'Mortgage advice for self-employed clients, contractors and company directors in Norfolk.',
+  intro: `Self-employed income assessment varies by lender. We help gather SA302s, accounts and day-rate contractor evidence to present your application clearly.`,
+  bullets: ["SA302 and accounts guidance","Contractor day-rate specialists","Two-year vs one-year accounts lenders","Agreement in principle before house hunting"],
+  faqs: [{"question":"I have only been self-employed two years—is that enough?","answer":"Often yes, with two years of accounts or SA302s. Some lenders accept one year with strong projections—we know which to approach."},{"question":"What if I was declined by my bank?","answer":"Different lenders use different criteria. A whole-of-market search often finds alternatives."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Mortgages","href":"/mortgages/first-time-buyers/"},{"label":"Self-employed mortgages"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+interface Item { title: string; description: string; href: string; }
+interface Props { items: Item[]; }
+const { items } = Astro.props;
+---
+<div class="mortgage-list">
+  {items.map((item) => (
+    <a class="mortgage-list__item" href={item.href}>
+      <div>
+        <strong>{item.title}</strong>
+        <span>{item.description}</span>
+      </div>
+      <span class="mortgage-list__chevron" aria-hidden="true">›</span>
+    </a>
+  ))}
+</div>

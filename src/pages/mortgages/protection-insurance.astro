@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'Protection & insurance',
+  description: 'Introduction to life, critical illness and income protection alongside your mortgage—referral to specialists.',
+  intro: `We introduce protection specialists who can discuss life cover, critical illness and income protection alongside your mortgage. We do not provide financial advice on protection products directly in this demo.`,
+  bullets: ["Introduction to FCA-regulated protection advisers","Life and critical illness overview","Income protection basics","No hard sell on products you do not need"],
+  faqs: [{"question":"Is protection mandatory with a mortgage?","answer":"Buildings insurance is required by your lender. Life cover is not usually mandatory but is worth considering—especially with dependants."},{"question":"Do you sell protection policies?","answer":"We introduce specialists. Mortgage advice and protection advice may be provided by different regulated parties."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Mortgages","href":"/mortgages/first-time-buyers/"},{"label":"Protection & insurance"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

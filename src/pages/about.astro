@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTABand from '../components/CTABand.astro';
+---
+<BaseLayout title="About | Harbor Mortgage Advice" description="Independent FCA-authorised mortgage advisers in Norwich since 2016.">
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
+  <section class="section">
+    <div class="container grid-2">
+      <div class="content-prose">
+        <h1>About Harbor Mortgage Advice</h1>
+        <p class="lead">Rachel and Tom provide whole-of-market advice with clear communication from first call to completion.</p>
+        <p>Harbor Mortgage Advice is an independent firm based on Tombland in Norwich. We are not tied to any high-street bank.</p>
+        <p>Principal adviser Rachel holds CeMAP qualifications and explains options in plain English—fixed vs variable, porting, and affordability—without jargon.</p>
+        <ul class="check-list">
+          <li>FCA authorised (987654 demo)</li>
+          <li>Whole-of-market lender access</li>
+          <li>In-person, video or phone appointments</li>
+          <li>Professional indemnity insurance held</li>
+        </ul>
+      </div>
+      <div class="hero__img"><div class="placeholder-img" role="img" aria-label="Team placeholder"></div></div>
+    </div>
+  </section>
+  <CTABand />
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="harbor-footer">
+  <div class="frame">
+    <div class="harbor-footer__regulatory">
+      <p><strong>Regulatory information</strong></p>
+      <p>
+        <a href="/fees/">Fees &amp; charges</a> · FCA Register no. 987654 (demo) ·
+        <a href="/faq/">Complaints procedure</a>
+      </p>
+      <p>Harbor Mortgage Advice Ltd is an appointed representative (demo). Your home may be repossessed if you do not keep up repayments on your mortgage.</p>
+    </div>
+    <div class="harbor-footer__grid">
+      <div>
+        <p><strong>{site.legalName}</strong></p>
+        <p>{site.address.street}, {site.address.city} {site.address.postcode}</p>
+        <p><a href={`tel:${site.phoneTel}`}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+      <div>
+        <h3>Mortgages</h3>
+        <ul>
+          {site.footerLinks.slice(0, 3).map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Resources</h3>
+        <ul>
+          {site.footerLinks.slice(3).map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+          <li><a href="/about/">About us</a></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1.25rem">&copy; {year} {site.legalName}. Demo portfolio website.</p>
+  </div>
+</footer>

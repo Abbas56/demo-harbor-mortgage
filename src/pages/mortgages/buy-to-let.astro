@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'Buy-to-let mortgages',
+  description: 'Buy-to-let mortgage advice for amateur landlords in Norfolk—affordability and lender criteria explained.',
+  intro: `Clear advice on BTL affordability and which lenders are comfortable with your portfolio size. We do not provide tax advice— we refer you to an accountant for limited company vs personal name decisions.`,
+  bullets: ["Personal and limited company overview","Portfolio landlord lenders","Stress test and rental coverage explained","Referrals to specialist accountants when needed"],
+  faqs: [{"question":"Should I buy in a limited company?","answer":"That is a tax decision. We explain mortgage implications and recommend speaking to a qualified accountant."},{"question":"How many BTL properties can I have?","answer":"Lender limits vary. We match you with lenders comfortable with your portfolio size."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Mortgages","href":"/mortgages/first-time-buyers/"},{"label":"Buy-to-let mortgages"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'Remortgaging in Norwich & Norfolk',
+  description: 'Remortgage advice when your fixed rate ends—product transfer vs switching lender explained clearly.',
+  intro: `When your fixed rate ends, doing nothing often means rolling onto your lender standard variable rate. We review your current deal, early repayment charges and whether switching saves money after fees.`,
+  bullets: ["Review 3–6 months before rate ends","Compare product transfer vs new lender","Early repayment charge guidance","Realistic timelines and paperwork support"],
+  faqs: [{"question":"When should I start looking?","answer":"Many clients start 3–6 months before their rate ends so there is time to compare options without rushing."},{"question":"Can you guarantee savings?","answer":"No. We model costs honestly including fees—sometimes staying with your lender is the right choice."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Mortgages","href":"/mortgages/first-time-buyers/"},{"label":"Remortgaging"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

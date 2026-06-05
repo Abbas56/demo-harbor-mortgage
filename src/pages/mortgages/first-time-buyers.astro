@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'First-time buyer mortgages in Norwich',
+  description: 'Independent mortgage advice for first-time buyers in Norwich and Norfolk—plain English, whole-of-market search.',
+  intro: `Buying your first home in Norwich or across Norfolk should be exciting—not a maze of jargon. We talk through your budget, explain agreement in principle vs full application, and search whole-of-market lenders.`,
+  bullets: ["Help with gifted deposits and documentation","Agreement in principle support","Plain-English explanation of each step","Support from offer accepted to completion"],
+  faqs: [{"question":"How much deposit do I need?","answer":"This depends on the property and lender. Many first-time buyers aim for at least 5–10%. We discuss realistic options in your consultation."},{"question":"Should I go direct to my bank?","answer":"You can, but a broker searches multiple lenders and explains pros and cons without bank bias."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Mortgages","href":"/mortgages/first-time-buyers/"},{"label":"First-time buyer mortgages"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Book a free initial consultation" text="No obligation— we explain our fees before you proceed." />
+</BaseLayout>

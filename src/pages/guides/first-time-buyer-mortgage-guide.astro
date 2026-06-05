@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'First-time buyer mortgage guide',
+  description: 'A practical guide to first-time buyer mortgages in Norfolk—deposits, AIP, surveys and completion explained.',
+  intro: `This guide walks through the main stages of buying your first home in Norwich or wider Norfolk—from saving a deposit to collecting keys on completion day.`,
+  bullets: ["Saving your deposit and Help to Buy legacy schemes","Agreement in principle vs full application","Surveys, searches and exchange explained","Glossary of common mortgage terms"],
+  faqs: [{"question":"What is an agreement in principle?","answer":"An AIP is a conditional indication of what a lender might lend based on initial checks. It helps when making offers—not a guarantee of final approval."},{"question":"Do I need a survey?","answer":"Your lender conducts a valuation. A homebuyer survey or full structural survey is optional but often recommended for peace of mind."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Guides","href":"/guides/first-time-buyer-mortgage-guide/"},{"label":"First-time buyer guide"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>

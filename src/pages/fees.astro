@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+
+const faqs = [
+  { question: 'Is the initial consultation free?', answer: 'Yes. Your first consultation is at no cost and no obligation. We explain our fees before you proceed.' },
+  { question: 'When do I pay the broker fee?', answer: 'Residential purchase fees are typically payable on completion. We confirm this in writing before you commit.' },
+  { question: 'Are lender fees included?', answer: 'No. Lender arrangement, valuation and legal fees are separate and explained by the lender and your solicitor.' },
+];
+---
+<BaseLayout title="Fees | Harbor Mortgage Advice" description="Transparent mortgage advice fees from Harbor Mortgage Advice, Norwich.">
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Fees' }]} />
+  <section class="panel">
+    <div class="frame">
+      <h1>Fees &amp; charges</h1>
+      <p class="lead">We believe fees should be explained upfront—no surprises on completion day.</p>
+      <dl class="fees-dl">
+        <div><dt>Initial consultation</dt><dd>Free</dd></div>
+        <div><dt>Residential purchase</dt><dd>From £495 on completion (demo)</dd></div>
+        <div><dt>Remortgage</dt><dd>From £295 on completion (demo)</dd></div>
+        <div><dt>Buy-to-let</dt><dd>From £595 on completion (demo)</dd></div>
+      </dl>
+      <p style="margin-top:1.25rem;font-size:0.875rem;padding:1rem;background:#fef3c7;border:1px solid #D69E2E">
+        Harbor Mortgage Advice is authorised and regulated by the Financial Conduct Authority (FCA no. 987654). Your home may be repossessed if you do not keep up repayments on your mortgage.
+      </p>
+    </div>
+  </section>
+  <FAQ items={faqs} />
+  <CTABand heading="Book a free initial consultation" href="/book-appointment/" />
+</BaseLayout>

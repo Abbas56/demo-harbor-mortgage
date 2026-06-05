@@ -1,0 +1,12 @@
+---
+import { site } from '../data/site';
+---
+<div class="trust-bar">
+  <div class="container">
+    <ul class="trust-bar__list">
+      {site.trustItems.map((item) => (
+        <li><strong>{item.label}</strong> {item.text}</li>
+      ))}
+    </ul>
+  </div>
+</div>

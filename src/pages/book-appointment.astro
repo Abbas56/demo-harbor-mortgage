@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Book appointment | Harbor Mortgage Advice" description="Request a free initial consultation. Choose in-person at Tombland, video or phone—we confirm by email within one working day.">
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'appointment' }]} />
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <h1>Book appointment</h1>
+        <p class="lead">Request a free initial consultation. Choose in-person at Tombland, video or phone—we confirm by email within one working day.</p>
+        <p>Prefer to talk? Call <a href={`tel:${site.phoneTel}`}>{site.phone}</a>.</p>
+      </div>
+      <form class="form-card" name="booking" method="POST" action={site.formAction}>
+        <input type="hidden" name="form-name" value="booking" />
+        <div class="form-group"><label for="name">Your name</label><input id="name" name="name" type="text" required autocomplete="name" /></div>
+        <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+        <div class="form-group"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel" /></div>
+        <div class="form-group"><label for="goal">What would you like to achieve?</label><textarea id="goal" name="goal" rows="4" required></textarea></div>
+        <div class="form-group"><label for="time">Preferred time</label>
+          <select id="time" name="time"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+        </div>
+        <button class="btn btn--primary btn--block" type="submit">Send request</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

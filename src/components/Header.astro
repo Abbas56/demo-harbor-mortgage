@@ -1,0 +1,34 @@
+---
+import { site } from '../data/site';
+---
+<header class="harbor-header">
+  <div class="frame harbor-header__inner">
+    <a class="harbor-logo" href="/">{site.name}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" id="nav-toggle">
+      <span></span><span></span><span></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="harbor-nav" aria-label="Main">
+      {site.nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+    {site.nav.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+</header>
+<style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}</style>
+<script>
+  const btn = document.getElementById('nav-toggle');
+  const nav = document.getElementById('mobile-nav');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      nav.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>

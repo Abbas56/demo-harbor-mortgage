@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const page = {
+  title: 'Moving home mortgages',
+  description: 'Mortgage advice for homemovers in Norwich and Norfolk—porting, new borrowing and chain coordination.',
+  intro: `Moving home often means balancing the sale of your current property with new borrowing. We explain porting existing deals, top-up borrowing and how chains affect timelines.`,
+  bullets: ["Porting and new application guidance","Affordability reassessment support","Coordination with your solicitor","Clear communication throughout the chain"],
+  faqs: [{"question":"Can I port my existing mortgage?","answer":"Sometimes. It depends on your lender and the new property. We check portability early in the process."},{"question":"What documents will I need?","answer":"Typically proof of income, bank statements, details of your current mortgage and the new property. We send a tailored checklist."}],
+};
+---
+<BaseLayout title={`${page.title} | Harbor Mortgage Advice`} description={page.description}>
+  <Breadcrumbs items={[{"label":"Home","href":"/"},{"label":"Mortgages","href":"/mortgages/first-time-buyers/"},{"label":"Moving home mortgages"}]} />
+  <article class="section">
+    <div class="container page-hero content-prose">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+      <ul class="check-list">
+        {page.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </article>
+  <FAQ items={page.faqs} />
+  <CTABand heading="Get in touch" text="Contact us for a friendly chat about your requirements." />
+</BaseLayout>
