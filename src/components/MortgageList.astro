@@ -1,11 +1,13 @@
 ---
+import { withBase } from '../utils/withBase';
+
 interface Item { title: string; description: string; href: string; }
 interface Props { items: Item[]; }
 const { items } = Astro.props;
 ---
 <div class="mortgage-list">
   {items.map((item) => (
-    <a class="mortgage-list__item" href={item.href}>
+    <a class="mortgage-list__item" href={withBase(item.href)}>
       <div>
         <strong>{item.title}</strong>
         <span>{item.description}</span>

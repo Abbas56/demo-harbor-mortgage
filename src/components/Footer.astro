@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { withBase } from '../utils/withBase';
 const year = new Date().getFullYear();
 ---
 <footer class="harbor-footer">
@@ -7,8 +8,8 @@ const year = new Date().getFullYear();
     <div class="harbor-footer__regulatory">
       <p><strong>Regulatory information</strong></p>
       <p>
-        <a href="/fees/">Fees &amp; charges</a> · FCA Register no. 987654 (demo) ·
-        <a href="/faq/">Complaints procedure</a>
+        <a href={withBase('/fees/')}>Fees &amp; charges</a> · FCA Register no. 987654 (demo) ·
+        <a href={withBase('/faq/')}>Complaints procedure</a>
       </p>
       <p>Harbor Mortgage Advice Ltd is an appointed representative (demo). Your home may be repossessed if you do not keep up repayments on your mortgage.</p>
     </div>
@@ -22,7 +23,7 @@ const year = new Date().getFullYear();
         <h3>Mortgages</h3>
         <ul>
           {site.footerLinks.slice(0, 3).map((l) => (
-            <li><a href={l.href}>{l.label}</a></li>
+            <li><a href={withBase(l.href)}>{l.label}</a></li>
           ))}
         </ul>
       </div>
@@ -30,9 +31,9 @@ const year = new Date().getFullYear();
         <h3>Resources</h3>
         <ul>
           {site.footerLinks.slice(3).map((l) => (
-            <li><a href={l.href}>{l.label}</a></li>
+            <li><a href={withBase(l.href)}>{l.label}</a></li>
           ))}
-          <li><a href="/about/">About us</a></li>
+          <li><a href={withBase('/about/')}>About us</a></li>
         </ul>
       </div>
     </div>

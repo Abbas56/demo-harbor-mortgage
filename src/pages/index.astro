@@ -6,6 +6,7 @@ import GuideList from '../components/GuideList.astro';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
 import { site } from '../data/site';
+import { withBase } from '../utils/withBase';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -57,7 +58,7 @@ const guides = [
         <h1>Mortgage advice in Norwich—clear options, no bank bias</h1>
         <p class="lead">Independent, whole-of-market advice for first-time buyers, homemovers and landlords across Norfolk.</p>
         <div class="hero-harbor__ctas">
-          <a class="btn-teal" href={site.primaryCtaHref}>{site.primaryCtaLabel}</a>
+          <a class="btn-teal" href={withBase(site.primaryCtaHref)}>{site.primaryCtaLabel}</a>
           <a class="btn-teal btn-teal--ghost" href={`tel:${site.phoneTel}`}>Call {site.phone}</a>
         </div>
       </div>

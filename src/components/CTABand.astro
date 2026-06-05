@@ -1,12 +1,14 @@
 ---
-interface Props { heading?: string; text?: string; href?: string; label?: string; }
 import { site } from '../data/site';
+import { withBase } from '../utils/withBase';
+
+interface Props { heading?: string; text?: string; href?: string; label?: string; }
 const { heading = 'Book a free initial consultation', text = 'No obligation—we explain our fees before you proceed.', href = site.primaryCtaHref, label = site.primaryCtaLabel } = Astro.props;
 ---
 <section class="cta-harbor">
   <div class="frame">
     <h2>{heading}</h2>
     <p>{text}</p>
-    <a class="btn-teal" href={href}>{label}</a>
+    <a class="btn-teal" href={withBase(href)}>{label}</a>
   </div>
 </section>

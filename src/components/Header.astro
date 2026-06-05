@@ -1,22 +1,23 @@
 ---
 import { site } from '../data/site';
+import { withBase } from '../utils/withBase';
 ---
 <header class="harbor-header">
   <div class="frame harbor-header__inner">
-    <a class="harbor-logo" href="/">{site.name}</a>
+    <a class="harbor-logo" href={withBase('/')}>{site.name}</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" id="nav-toggle">
       <span></span><span></span><span></span>
       <span class="visually-hidden">Menu</span>
     </button>
     <nav class="harbor-nav" aria-label="Main">
       {site.nav.map((item) => (
-        <a href={item.href}>{item.label}</a>
+        <a href={withBase(item.href)}>{item.label}</a>
       ))}
     </nav>
   </div>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
     {site.nav.map((item) => (
-      <a href={item.href}>{item.label}</a>
+      <a href={withBase(item.href)}>{item.label}</a>
     ))}
   </nav>
 </header>

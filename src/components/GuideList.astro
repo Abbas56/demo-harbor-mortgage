@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/withBase';
+
 interface Guide { title: string; href: string; date: string; readTime: string; }
 interface Props { guides: Guide[]; }
 const { guides } = Astro.props;
@@ -6,7 +8,7 @@ const { guides } = Astro.props;
 <ul class="guide-list">
   {guides.map((g) => (
     <li>
-      <a href={g.href}>
+      <a href={withBase(g.href)}>
         <strong>{g.title}</strong>
         <span class="guide-list__meta">{g.date} · {g.readTime} read</span>
       </a>
