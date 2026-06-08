@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MortgageList from '../components/MortgageList.astro';
 import Stepper from '../components/Stepper.astro';
@@ -7,6 +8,9 @@ import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
 import { site } from '../data/site';
 import { withBase } from '../utils/withBase';
+import heroAdviser from '../assets/images/hero-adviser.jpg';
+import adviserRachel from '../assets/images/adviser-rachel.jpg';
+import adviserDavid from '../assets/images/adviser-david.jpg';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -63,7 +67,9 @@ const guides = [
         </div>
       </div>
       <div class="hero-harbor__frame">
-        <div class="hero-harbor__photo" role="img" aria-label="Mortgage adviser placeholder"></div>
+        <div class="hero-harbor__photo">
+          <Image src={heroAdviser} alt="Mortgage adviser meeting with clients" widths={[400, 800, 1200]} sizes="(min-width: 48rem) 40vw, 100vw" />
+        </div>
       </div>
     </div>
   </section>
@@ -84,12 +90,16 @@ const guides = [
       <h2>Your advisers</h2>
       <div class="adviser-row" style="margin-top:1.5rem">
         <article class="adviser-card">
-          <div class="adviser-card__photo" role="img" aria-label="Rachel"></div>
+          <div class="adviser-card__photo">
+            <Image src={adviserRachel} alt="Rachel Harbor, mortgage adviser" widths={[200, 400]} sizes="8rem" />
+          </div>
           <h3>Rachel Harbor</h3>
           <p>CeMAP qualified · 12 years advising in Norfolk</p>
         </article>
         <article class="adviser-card">
-          <div class="adviser-card__photo" role="img" aria-label="David"></div>
+          <div class="adviser-card__photo">
+            <Image src={adviserDavid} alt="David Marsh, mortgage adviser" widths={[200, 400]} sizes="8rem" />
+          </div>
           <h3>David Marsh</h3>
           <p>CeMAP qualified · Buy-to-let &amp; self-employed specialist</p>
         </article>
