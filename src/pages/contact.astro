@@ -5,6 +5,9 @@ import { site } from '../data/site';
 ---
 <BaseLayout title={`Contact | ${site.name}`} description="Contact Harbor Mortgage Advice Ltd. Call 01603 882 410 or send an enquiry.">
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
+  <div class="demo-banner" role="status">
+    Demo project — contact form is not monitored.
+  </div>
   <section class="section">
     <div class="container grid-2">
       <div>
@@ -14,7 +17,7 @@ import { site } from '../data/site';
         <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
         <p><strong>Address:</strong><br />{site.address.street}<br />{site.address.city}, {site.address.postcode}</p>
       </div>
-      <form class="form-card" name="contact" method="POST" data-netlify="true" action={site.formAction}>
+      <form class="form-card form-card--demo" name="contact" aria-disabled="true">
         <input type="hidden" name="form-name" value="contact" />
         <div class="form-group">
           <label for="name">Your name</label>
@@ -32,8 +35,23 @@ import { site } from '../data/site';
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        <button class="btn btn--primary btn--block" type="submit">Send enquiry</button>
+        <button class="btn btn--primary btn--block" type="button" disabled>Send enquiry</button>
       </form>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .demo-banner {
+    background: #0f2744;
+    color: #fff;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .form-card--demo {
+    opacity: 0.85;
+  }
+</style>
